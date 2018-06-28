@@ -1,0 +1,49 @@
+{
+  "name": "launch-darkly-feature-builder",
+  "version": "0.0.0",
+  "description": "Builds and manages launch darkly features from code.",
+  "bin": {
+    "launch-darkly-feature-builder": "./bin/launch-darkly-feature-builder"
+  },
+  "scripts": {
+    "ci": "npm run lint && npm run test",
+    "coverage": "nyc --all --reporter=html --report-dir test_coverage --reporter=text mocha test --timeout 10s",
+    "lint": "eslint .",
+    "start": "./bin/launch-darkly-feature-builder",
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brightspace/launch-darkly-feature-builder.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Brightspace/launch-darkly-feature-builder/issues"
+  },
+  "homepage": "https://github.com/Brightspace/launch-darkly-feature-builder#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^5.0.1",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "bunyan": "^1.8.12",
+    "command-line-args": "^5.0.2",
+    "command-line-usage": "^5.0.5",
+    "deep-freeze": "0.0.1",
+    "json-patch-gen": "^1.0.2",
+    "lodash": "^4.17.10",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2"
+  },
+  "nyc": {
+    "exclude": [
+      "test/converters/incorrectly-named-plugin/",
+      "test_coverage/"
+    ]
+  }
+}

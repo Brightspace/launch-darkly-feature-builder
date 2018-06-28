@@ -1,0 +1,129 @@
+{
+	"key": "boolean-feature",
+	"name": "Boolean feature",
+	"kind": "boolean",
+	"description": "True or false, nice and simple",
+	"creationDate": 1475828623665,
+	"includeInSnippet": false,
+	"variations": [
+		{
+			"value": true,
+			"name": "true"
+		},
+		{
+			"value": false,
+			"name": "false"
+		}
+	],
+	"temporary": true,
+	"tags": [
+		"abc",
+		"def"
+	],
+	"_links": {
+		"parent": {
+			"href": "/api/v2/flags/default",
+			"type": "application/json"
+		},
+		"self": {
+			"href": "/api/v2/flags/default/boolean-feature",
+			"type": "application/json"
+		}
+	},
+	"goalIds": [],
+	"customProperties": {},
+	"environments": {
+		"production": {
+			"on": true,
+			"archived": false,
+			"salt": "Y3VzdG9tLWZpdG5lc3MtaW50ZWdyYXRpb24=",
+			"sel": "136152b8e6c349fcb2052463e2967b71",
+			"lastModified": 1473878609019,
+			"version": 8,
+			"targets": [
+				{
+					"values": [],
+					"variation": 1
+				}
+			],
+			"rules": [],
+			"fallthrough": {
+				"variation": 0
+			},
+			"offVariation": 1,
+			"prerequisites": [],
+			"_site": {
+				"href": "/default/production/features/boolean-feature",
+				"type": "text/html"
+			},
+			"_access": {
+				"denied": []
+			},
+			"_environmentName": "Production",
+			"trackEvents": false,
+			"_debugEventsUntilDate": null
+		},
+		"test": {
+			"on": true,
+			"archived": false,
+			"salt": "Y3VzdG9tLWZpdG5lc3MtaW50ZWdyYXRpb24=",
+			"sel": "89ab623690214c28bdc0ca37340c59aa",
+			"lastModified": 1474031151064,
+			"version": 17,
+			"targets": [
+				{
+					"values": [
+						"x",
+						"y",
+						"z"
+					],
+					"variation": 0
+				}
+			],
+			"rules": [
+				{
+					"variation": 0,
+					"clauses": [
+						{
+							"attribute": "age",
+							"op": "in",
+							"values": [
+								30,
+								35
+							],
+							"negate": false
+						}
+					]
+				},
+				{
+					"variation": 1,
+					"clauses": [
+						{
+							"attribute": "sex",
+							"op": "in",
+							"values": [
+								"male"
+							],
+							"negate": true
+						}
+					]
+				}
+			],
+			"fallthrough": {
+				"variation": 1
+			},
+			"offVariation": 0,
+			"prerequisites": [],
+			"_site": {
+				"href": "/default/test/features/boolean-feature",
+				"type": "text/html"
+			},
+			"_access": {
+				"denied": []
+			},
+			"_environmentName": "Test",
+			"trackEvents": false,
+			"_debugEventsUntilDate": null
+		}
+	}
+}

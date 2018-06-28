@@ -1,0 +1,91 @@
+{
+	"name": "Boolean feature",
+	"kind": "boolean",
+	"description": "True or false, nice and simple",
+	"includeInSnippet": false,
+	"variations": [
+		{
+			"value": true,
+			"name": "true"
+		},
+		{
+			"value": false,
+			"name": "false"
+		}
+	],
+	"temporary": true,
+	"tags": [
+		"abc",
+		"def"
+	],
+	"goalIds": [],
+	"customProperties": {},
+	"environments": {
+		"production": {
+			"on": true,
+			"archived": false,
+			"targets": [
+				{
+					"values": [],
+					"variation": 1
+				}
+			],
+			"rules": [],
+			"fallthrough": {
+				"variation": 0
+			},
+			"offVariation": 1,
+			"prerequisites": [],
+			"trackEvents": false
+		},
+		"test": {
+			"on": true,
+			"archived": false,
+			"targets": [
+				{
+					"values": [
+						"x",
+						"y",
+						"z"
+					],
+					"variation": 0
+				}
+			],
+			"rules": [
+				{
+					"variation": 0,
+					"clauses": [
+						{
+							"attribute": "age",
+							"op": "in",
+							"values": [
+								30,
+								35
+							],
+							"negate": false
+						}
+					]
+				},
+				{
+					"variation": 1,
+					"clauses": [
+						{
+							"attribute": "sex",
+							"op": "in",
+							"values": [
+								"male"
+							],
+							"negate": true
+						}
+					]
+				}
+			],
+			"fallthrough": {
+				"variation": 1
+			},
+			"offVariation": 0,
+			"prerequisites": [],
+			"trackEvents": false
+		}
+	}
+}
