@@ -2,10 +2,18 @@ version: 2
 
 workflows:
   version: 2
-  plan_and_apply:
+  workflow:
     jobs:
 
       - test
+
+      - deploy:
+          requires: [ 'test' ]
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v\d+\.\d+\.\d+$/
 
 jobs:
 
@@ -15,10 +23,24 @@ jobs:
     steps:
       - checkout
 
-      - run: 
+      - run:
          name: npm install
          command: npm install
 
-      - run: 
+      - run:
          name: npm run ci
          command: npm run ci
+
+  deploy:
+    docker:
+      - image: circleci/node:8.11.3
+    steps:
+      - checkout
+
+      - run:
+         name: npm login
+         command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+
+      - run:
+         name: npm publish
+         command: npm publish
