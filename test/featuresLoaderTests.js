@@ -53,5 +53,31 @@ describe( 'featuresLoader', function() {
 				}
 			} );
 		} );
+
+		it( 'should load features', async function() {
+
+			const convertersDir = pathUtil.join(
+				__dirname,
+				'converters'
+			);
+
+			const featuresDir = pathUtil.join(
+				__dirname,
+				'projects/optionsEcho'
+			);
+
+			const features = await loadFeaturesAsync( convertersDir, featuresDir );
+			assert.deepEqual( features, {
+				echo: {
+					factoryOptions: {},
+					convertOptions: {
+						path: pathUtil.join(
+							__dirname,
+							'projects/optionsEcho/echo.feature.json'
+						)
+					}
+				}
+			} );
+		} );
 	} );
 } );

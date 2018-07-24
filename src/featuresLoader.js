@@ -8,19 +8,22 @@ module.exports = async function loadFeaturesAsync( convertersDir, definitionsDir
 
 	const converterOptions = Object.freeze( {} );
 	const converters = await loadFeatureConvertersAsync( convertersDir, converterOptions );
-	const definitions = await featureFileLoader( definitionsDir );
-	const convertOptions = Object.freeze( {} );
+	const featureFiles = await featureFileLoader( definitionsDir );
 
 	return Promise
 		.map(
-			_.toPairs( definitions ),
+			_.toPairs( featureFiles ),
 			async pair => {
 
-				const [ key, definition ] = pair;
+				const [ key, featureFile ] = pair;
+
+				const convertOptions = Object.freeze( {
+					path: featureFile.path
+				} );
 
 				try {
 					const feature = await converters.convertAsync(
-						definition,
+						featureFile.definition,
 						convertOptions
 					);
 
