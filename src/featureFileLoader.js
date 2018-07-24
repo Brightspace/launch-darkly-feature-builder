@@ -47,7 +47,12 @@ async function enumerateDirectoryAsync( path, features, relativePath = '' ) {
 				'Loading feature definition'
 			);
 
-			features[ featureKey ] = await loadFeatureAsync( filePath );
+			const definition = await loadFeatureAsync( filePath );
+
+			features[ featureKey ] = {
+				path: filePath,
+				definition
+			};
 		}
 	} );
 }
