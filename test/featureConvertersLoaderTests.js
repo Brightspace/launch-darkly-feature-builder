@@ -10,6 +10,7 @@ describe( 'loadFeatureConvertersAsync', function() {
 		const catalog = await loadFeatureConvertersAsync( path, options ); 
 
 		assert.deepEqual( catalog.schemas, [
+			'http://test.org/echo-options',
 			'http://test.org/simple-boolean',
 			'http://test.org/simple-enum'
 		] );
