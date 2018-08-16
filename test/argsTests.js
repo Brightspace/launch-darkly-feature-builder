@@ -244,6 +244,28 @@ describe( 'parseArgs', function() {
 				'--plan',
 				'plan.json',
 				'--api-key',
+				'ABC',
+				'--comment',
+				'jimmy approves'
+			] );
+
+			assert.deepEqual( args, {
+				action: 'apply',
+				args: {
+					'api-key': 'ABC',
+					plan: 'plan.json',
+					comment: 'jimmy approves'
+				}
+			} );
+		} );
+
+		it( 'should not throw if missing comment', function() {
+
+			const args = parseArgs( [
+				'apply',
+				'--plan',
+				'plan.json',
+				'--api-key',
 				'ABC'
 			] );
 
@@ -251,7 +273,8 @@ describe( 'parseArgs', function() {
 				action: 'apply',
 				args: {
 					'api-key': 'ABC',
-					plan: 'plan.json'
+					plan: 'plan.json',
+					comment: 'Applied using launch-darkly-feature-builder'
 				}
 			} );
 		} );

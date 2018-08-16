@@ -50,7 +50,7 @@ class LaunchDarklyClient {
 		return this._client( req );
 	}
 
-	updateFeatureFlagAsync( project, key, patch ) {
+	updateFeatureFlagAsync( project, key, patch, comment ) {
 
 		const url = `/api/v2/flags/${ encodeURI( project ) }/${ encodeURI( key ) }`;
 
@@ -58,9 +58,12 @@ class LaunchDarklyClient {
 			method: 'PATCH',
 			url: url,
 			headers: {
-				'Content-Type': 'application/json-patch+json'
+				'Content-Type': 'application/json'
 			},
-			json: patch
+			json: {
+				comment,
+				patch
+			}
 		};
 
 		return this._client( req );

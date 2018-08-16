@@ -21,6 +21,11 @@ const actionDefintions = deepFreeze( {
 		{
 			name: 'plan',
 			required: true
+		},
+		{
+			name: 'comment',
+			required: true,
+			defaultValue: 'Applied using launch-darkly-feature-builder'
 		}
 	],
 	plan: [
@@ -201,6 +206,11 @@ function showUsage() {
 					name: 'api-key',
 					typeLabel: '{underline key}',
 					description: 'The launch darkly api key'
+				},
+				{
+					name: 'comment',
+					typeLabel: '{underline comment}',
+					description: 'The comment to include in patches'
 				}
 			]
 		}
