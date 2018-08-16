@@ -1,6 +1,16 @@
 const _ = require( 'lodash' );
 const deepFreeze = require( 'deep-freeze' );
 
+const ignoredRuleFields = deepFreeze( [
+	'_id'
+] );
+
+function normalizeRule( rule ) {
+
+	const normal = _.omit( rule, ignoredRuleFields );
+	return normal;
+}
+
 const ignoredEnvironmentFields = deepFreeze( [
 	'salt',
 	'sel',
@@ -29,6 +39,8 @@ function normalizeEnvironment( env ) {
 		_.omit( env, ignoredEnvironmentFields ),
 		defaultEnvironmentFields
 	);
+
+	normal.rules = _.map( normal.rules, normalizeRule );
 
 	return normal;
 }
