@@ -1,6 +1,16 @@
 const _ = require( 'lodash' );
 const deepFreeze = require( 'deep-freeze' );
 
+const ignoredClauseFields = deepFreeze( [
+	'__idx__'
+] );
+
+function normalizeClause( clause ) {
+	
+	const normal = _.omit( clause, ignoredClauseFields );
+	return normal;
+}
+
 const ignoredRuleFields = deepFreeze( [
 	'_id'
 ] );
@@ -8,6 +18,9 @@ const ignoredRuleFields = deepFreeze( [
 function normalizeRule( rule ) {
 
 	const normal = _.omit( rule, ignoredRuleFields );
+	
+	normal.clauses = _.map( normal.clauses, normalizeClause );
+	
 	return normal;
 }
 

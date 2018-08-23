@@ -69,5 +69,63 @@ describe( 'featureNormalizer', function() {
 			}
 		} );
 	} );
+	
+	it( 'should strip out rule clauses __idx__ field', function() {
 
+		const feature = deepFreeze( {
+			environments: {
+				test: {
+					rules: [
+						{
+							clauses: [
+								{
+									attribute: 'field',
+									op: 'in',
+									values: [ 'value' ],
+									negate: false,
+									__idx__: 0
+								}
+							]
+						}
+					]	
+				}
+			}
+		} );
+
+		const normalized = featureNormalizer( feature );
+
+		assert.deepEqual( normalized, {
+			description: '',
+			includeInSnippet: false,
+			temporary: true,
+			tags: [],
+			goalIds: [],
+			customProperties: {},
+			environments: {
+				test: {
+					archived: false,
+					fallthrough: {
+						variation: 0
+					},
+					offVariation: 0,
+					on: true,
+					prerequisites: [],
+					targets: [],
+					trackEvents: false,
+					rules: [
+						{
+							clauses: [
+								{
+									attribute: 'field',
+									op: 'in',
+									values: [ 'value' ],
+									negate: false
+								}
+							]
+						}
+					]	
+				}
+			}
+		} );
+	} );
 } );
