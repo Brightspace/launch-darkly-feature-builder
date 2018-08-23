@@ -3,7 +3,7 @@ const featureComparer = require( './featureComparer.js' );
 const LaunchDarklyClient = require( './LaunchDarklyClient.js' );
 const log = require( './log.js' );
 
-async function createFeatureAsync( ldClient, project, key, plan ) {
+async function createFeatureAsync( ldClient, project, key, plan, comment ) {
 
 	const createParams = _.pick( plan.target, [
 		'name',
@@ -40,7 +40,7 @@ async function createFeatureAsync( ldClient, project, key, plan ) {
 		'Applying patch'
 	);
 
-	const result = await ldClient.updateFeatureFlagAsync( project, key, patch );
+	const result = await ldClient.updateFeatureFlagAsync( project, key, patch, comment );
 	log.info(
 		{
 			project,
@@ -51,7 +51,7 @@ async function createFeatureAsync( ldClient, project, key, plan ) {
 	);
 }
 
-async function updateFeatureAsync( ldClient, project, key, plan ) {
+async function updateFeatureAsync( ldClient, project, key, plan, comment ) {
 
 	const flag = await ldClient.getFeatureFlagAsync( project, key );
 
@@ -70,7 +70,7 @@ async function updateFeatureAsync( ldClient, project, key, plan ) {
 		throw new Error( 'Out of date feature plan' );
 	}
 
-	const result = await ldClient.updateFeatureFlagAsync( project, key, plan.patch );
+	const result = await ldClient.updateFeatureFlagAsync( project, key, plan.patch, comment );
 	log.info(
 		{
 			project,
@@ -88,16 +88,16 @@ module.exports = class FeaturePlanApplier {
 		this._project = project;
 	}
 
-	applyPlanAsync( key, plan ) {
+	applyPlanAsync( key, plan, comment ) {
 	
 		const action = plan.action;
 		switch( action ) {
 
 			case 'create':
-				return createFeatureAsync( this._ldClient, this._project, key, plan );
+				return createFeatureAsync( this._ldClient, this._project, key, plan, comment );
 
 			case 'update':
-				return updateFeatureAsync( this._ldClient, this._project, key, plan );
+				return updateFeatureAsync( this._ldClient, this._project, key, plan, comment );
 
 			case 'none':
 				return Promise.resolve();
