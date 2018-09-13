@@ -2,6 +2,7 @@ const assert = require( './util/assert.js' );
 const planBuilder = require( '../src/planBuilder.js' );
 
 describe( 'planBuilder', function() {
+
 	it( 'should create plan', function() {
 
 		const currentFeatures = {
@@ -74,6 +75,55 @@ describe( 'planBuilder', function() {
 				}
 			}
 		} );
+
+	} );
+
+	it( 'should throw if updating both environments and variations', function() {
+
+		const currentFeatures = {
+			featureA: {
+				variations: [
+					{
+						value: true,
+						name: "true"
+					},
+					{
+						value: false,
+						name: "false"
+					}
+				],
+				environments: {
+					production: {
+						offVariation: 0
+					}
+				}
+			}
+		};
+	
+		const targetFeatures = {
+			featureA: {
+				variations: [
+					{
+						value: true,
+						name: "On"
+					},
+					{
+						value: false,
+						name: "Off"
+					}
+				],
+				environments: {
+					production: {
+						offVariation: 1
+					}
+				}
+			}
+		};
+	
+		assert.throws(
+			() => planBuilder( currentFeatures, targetFeatures ),
+			/Unable to generate valid patch for featureA: Cannot simultaneously update environments and variations/
+		);
 
 	} );
 } );
