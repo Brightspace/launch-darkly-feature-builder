@@ -54,7 +54,7 @@ function normalizeEnvironment( env ) {
 
 	const normal = _.defaults(
 		omitExplicitAndInternal( env, ignoredEnvironmentFields ),
-		defaultEnvironmentFields 
+		defaultEnvironmentFields
 	);
 
 	normal.rules = _.map( normal.rules, normalizeRule );
