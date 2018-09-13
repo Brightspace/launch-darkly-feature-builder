@@ -1,23 +1,31 @@
 const _ = require( 'lodash' );
 const deepFreeze = require( 'deep-freeze' );
 
-const ignoredClauseFields = deepFreeze( [
-	'__idx__'
-] );
+function isInternalField( value, name ) {
 
-function normalizeClause( clause ) {
-	
-	const normal = _.omit( clause, ignoredClauseFields );
+	if( _.startsWith( name, '_' ) ) {
+		return true;
+	}
+
+	return false;
+}
+
+function omitExplicitAndInternal( object, paths ) {
+
+	let normal = _.omit( object, paths );
+	normal = _.omitBy( normal, isInternalField );
 	return normal;
 }
 
-const ignoredRuleFields = deepFreeze( [
-	'_id'
-] );
+function normalizeClause( clause ) {
+
+	const normal = _.omitBy( clause, isInternalField );
+	return normal;
+}
 
 function normalizeRule( rule ) {
 
-	const normal = _.omit( rule, ignoredRuleFields );
+	const normal = _.omitBy( rule, isInternalField );
 	
 	normal.clauses = _.map( normal.clauses, normalizeClause );
 	
@@ -25,14 +33,10 @@ function normalizeRule( rule ) {
 }
 
 const ignoredEnvironmentFields = deepFreeze( [
+	'lastModified',
 	'salt',
 	'sel',
-	'lastModified',
-	'version',
-	'_site',
-	'_access',
-	'_environmentName',
-	'_debugEventsUntilDate'
+	'version'
 ] );
 
 const defaultEnvironmentFields = deepFreeze( {
@@ -49,7 +53,7 @@ const defaultEnvironmentFields = deepFreeze( {
 function normalizeEnvironment( env ) {
 
 	const normal = _.defaults(
-		_.omit( env, ignoredEnvironmentFields ),
+		omitExplicitAndInternal( env, ignoredEnvironmentFields ),
 		defaultEnvironmentFields
 	);
 
@@ -59,11 +63,9 @@ function normalizeEnvironment( env ) {
 }
 
 const ignoredFeatureFlagFields = deepFreeze( [
-	'key',
 	'creationDate',
-	'_links',
-	'maintainerId',
-	'_maintainer'
+	'key',
+	'maintainerId'
 ] );
 
 const defaultFeatureFlagFields = deepFreeze( {
@@ -78,7 +80,7 @@ const defaultFeatureFlagFields = deepFreeze( {
 module.exports = function( feature ) {
 
 	const normal = _.defaults(
-		_.omit( feature, ignoredFeatureFlagFields ),
+		omitExplicitAndInternal( feature, ignoredFeatureFlagFields ),
 		defaultFeatureFlagFields
 	);
 
