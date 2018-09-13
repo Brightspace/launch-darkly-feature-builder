@@ -85,11 +85,11 @@ describe( 'planBuilder', function() {
 				variations: [
 					{
 						value: true,
-						name: "true"
+						name: 'true'
 					},
 					{
 						value: false,
-						name: "false"
+						name: 'false'
 					}
 				],
 				environments: {
@@ -105,11 +105,11 @@ describe( 'planBuilder', function() {
 				variations: [
 					{
 						value: true,
-						name: "On"
+						name: 'on'
 					},
 					{
 						value: false,
-						name: "Off"
+						name: 'off'
 					}
 				],
 				environments: {
