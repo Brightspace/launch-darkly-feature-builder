@@ -1,6 +1,6 @@
 const _ = require( 'lodash' );
 const featureNormalizer = require( './featureNormalizer.js' );
-const jsonPatchGen = require( 'json-patch-gen' );
+const jsonPatchGen = require( 'd2l-json-patch-gen' );
 
 module.exports = function( current, target ) {
 
