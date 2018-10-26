@@ -1,6 +1,6 @@
 {
   "name": "launch-darkly-feature-builder",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Builds and manages launch darkly features from code.",
   "bin": {
     "launch-darkly-feature-builder": "./bin/launch-darkly-feature-builder"
@@ -34,7 +34,7 @@
     "bunyan": "^1.8.12",
     "command-line-args": "^5.0.2",
     "command-line-usage": "^5.0.5",
-    "d2l-json-patch-gen": "git+https://github.com/Brightspace/d2l-json-patch-gen.git#1.1.0",
+    "d2l-json-patch-gen": "^1.1.0",
     "deep-freeze": "0.0.1",
     "json-patch-gen": "^1.0.2",
     "lodash": "^4.17.11",

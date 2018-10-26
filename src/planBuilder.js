@@ -26,7 +26,9 @@ function validatePatch( key, patch ) {
 
 	if( patchesEnvironments && patchesVariations ) {
 
-		const msg = `Unable to generate valid patch for ${ key }: Cannot simultaneously update environments and variations`;
+		const patchJson = JSON.stringify( patch, null, '\t' );
+
+		const msg = `Unable to generate valid patch for ${ key }: Cannot simultaneously update environments and variations: ${ patchJson }`;
 		throw new Error( msg );
 	}
 }
