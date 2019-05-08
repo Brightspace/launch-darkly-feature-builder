@@ -74,7 +74,11 @@ const defaultFeatureFlagFields = deepFreeze( {
 	temporary: true,
 	tags: [],
 	goalIds: [],
-	customProperties: {}
+	customProperties: {},
+	experiments: {
+		baselineIdx: 0,
+		metrics: []
+	}
 } );
 
 module.exports = function( feature ) {
