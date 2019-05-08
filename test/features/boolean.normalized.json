@@ -20,6 +20,10 @@
 	],
 	"goalIds": [],
 	"customProperties": {},
+	"experiments": {
+		"baselineIdx": 0,
+		"metrics": []
+	},
 	"environments": {
 		"production": {
 			"on": true,

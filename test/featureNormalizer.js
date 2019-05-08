@@ -26,6 +26,10 @@ describe( 'featureNormalizer', function() {
 			tags: [],
 			goalIds: [],
 			customProperties: {},
+			experiments: {
+				baselineIdx: 0,
+				metrics: []
+			},
 			environments: {}
 		} );
 	} );
@@ -40,6 +44,10 @@ describe( 'featureNormalizer', function() {
 			tags: [],
 			goalIds: [],
 			customProperties: {},
+			experiments: {
+				baselineIdx: 0,
+				metrics: []
+			},
 			environments: {
 				'test': {}
 			}
@@ -55,6 +63,10 @@ describe( 'featureNormalizer', function() {
 			tags: [],
 			goalIds: [],
 			customProperties: {},
+			experiments: {
+				baselineIdx: 0,
+				metrics: []
+			},
 			environments: {
 				'test': {
 					on: true,
@@ -101,6 +113,10 @@ describe( 'featureNormalizer', function() {
 			tags: [],
 			goalIds: [],
 			customProperties: {},
+			experiments: {
+				baselineIdx: 0,
+				metrics: []
+			},
 			environments: {
 				test: {
 					archived: false,
