@@ -28,7 +28,7 @@ describe( 'featureNormalizer', function() {
 			customProperties: {},
 			experiments: {
 				baselineIdx: 0,
-				metrics: []
+				items: []
 			},
 			environments: {}
 		} );
@@ -46,7 +46,7 @@ describe( 'featureNormalizer', function() {
 			customProperties: {},
 			experiments: {
 				baselineIdx: 0,
-				metrics: []
+				items: []
 			},
 			environments: {
 				'test': {}
@@ -65,7 +65,7 @@ describe( 'featureNormalizer', function() {
 			customProperties: {},
 			experiments: {
 				baselineIdx: 0,
-				metrics: []
+				items: []
 			},
 			environments: {
 				'test': {
@@ -115,7 +115,7 @@ describe( 'featureNormalizer', function() {
 			customProperties: {},
 			experiments: {
 				baselineIdx: 0,
-				metrics: []
+				items: []
 			},
 			environments: {
 				test: {
