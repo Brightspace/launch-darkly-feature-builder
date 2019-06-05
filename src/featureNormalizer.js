@@ -77,7 +77,7 @@ const defaultFeatureFlagFields = deepFreeze( {
 	customProperties: {},
 	experiments: {
 		baselineIdx: 0,
-		metrics: []
+		items: []
 	}
 } );
 

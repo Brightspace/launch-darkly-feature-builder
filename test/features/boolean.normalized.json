@@ -22,7 +22,7 @@
 	"customProperties": {},
 	"experiments": {
 		"baselineIdx": 0,
-		"metrics": []
+		"items": []
 	},
 	"environments": {
 		"production": {
