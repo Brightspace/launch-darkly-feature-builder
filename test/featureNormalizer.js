@@ -20,8 +20,8 @@ describe( 'featureNormalizer', function() {
 		const normalized = featureNormalizer( feature );
 
 		assert.deepEqual( normalized, {
-			archived: false,
 			description: '',
+			archived: false,
 			includeInSnippet: false,
 			temporary: true,
 			tags: [],
