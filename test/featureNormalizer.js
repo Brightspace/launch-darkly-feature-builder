@@ -21,6 +21,7 @@ describe( 'featureNormalizer', function() {
 
 		assert.deepEqual( normalized, {
 			description: '',
+			archived: false,
 			includeInSnippet: false,
 			temporary: true,
 			tags: [],
@@ -58,6 +59,7 @@ describe( 'featureNormalizer', function() {
 		assert.deepEqual( normalized, {
 			name: 'test-feature',
 			description: '',
+			archived: false,
 			includeInSnippet: false,
 			temporary: true,
 			tags: [],
@@ -108,6 +110,7 @@ describe( 'featureNormalizer', function() {
 
 		assert.deepEqual( normalized, {
 			description: '',
+			archived: false,
 			includeInSnippet: false,
 			temporary: true,
 			tags: [],

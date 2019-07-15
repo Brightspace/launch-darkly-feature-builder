@@ -70,6 +70,7 @@ const ignoredFeatureFlagFields = deepFreeze( [
 
 const defaultFeatureFlagFields = deepFreeze( {
 	description: '',
+	archived: false,
 	includeInSnippet: false,
 	temporary: true,
 	tags: [],
