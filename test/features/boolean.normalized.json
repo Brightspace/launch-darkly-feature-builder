@@ -36,7 +36,8 @@
 			},
 			"offVariation": 1,
 			"prerequisites": [],
-			"trackEvents": false
+			"trackEvents": false,
+			"trackEventsFallthrough": false
 		},
 		"test": {
 			"on": true,
@@ -85,7 +86,8 @@
 			},
 			"offVariation": 0,
 			"prerequisites": [],
-			"trackEvents": false
+			"trackEvents": false,
+			"trackEventsFallthrough": false
 		}
 	}
 }

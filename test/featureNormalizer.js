@@ -64,7 +64,8 @@ describe( 'featureNormalizer', function() {
 					fallthrough: { variation: 0 },
 					offVariation: 0,
 					prerequisites: [],
-					trackEvents: false
+					trackEvents: false,
+					trackEventsFallthrough: false
 				}
 			}
 		} );
@@ -112,6 +113,7 @@ describe( 'featureNormalizer', function() {
 					prerequisites: [],
 					targets: [],
 					trackEvents: false,
+					trackEventsFallthrough: false,
 					rules: [
 						{
 							clauses: [
