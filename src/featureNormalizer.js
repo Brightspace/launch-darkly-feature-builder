@@ -23,9 +23,16 @@ function normalizeClause( clause ) {
 	return normal;
 }
 
+const defaultRuleFields = deepFreeze( {
+	trackEvents: false
+} );
+
 function normalizeRule( rule ) {
 
-	const normal = _.omitBy( rule, isInternalField );
+	const normal = _.defaults(
+		_.omitBy( rule, isInternalField ),
+		defaultRuleFields
+	);
 	
 	normal.clauses = _.map( normal.clauses, normalizeClause );
 	

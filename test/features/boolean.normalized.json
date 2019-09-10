@@ -70,7 +70,8 @@
 							],
 							"negate": false
 						}
-					]
+					],
+					"trackEvents": false
 				},
 				{
 					"variation": 1,
@@ -83,7 +84,8 @@
 							],
 							"negate": true
 						}
-					]
+					],
+					"trackEvents": false
 				}
 			],
 			"fallthrough": {

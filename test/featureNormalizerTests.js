@@ -142,7 +142,8 @@ describe( 'featureNormalizer', function() {
 									values: [ 'value' ],
 									negate: false
 								}
-							]
+							],
+							trackEvents: false
 						}
 					]	
 				}
