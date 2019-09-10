@@ -47,7 +47,8 @@ const defaultEnvironmentFields = deepFreeze( {
 	fallthrough: { variation: 0 },
 	offVariation: 0,
 	prerequisites: [],
-	trackEvents: false
+	trackEvents: false,
+	trackEventsFallthrough: false
 } );
 
 function normalizeEnvironment( env ) {
