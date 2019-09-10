@@ -2,6 +2,7 @@
 	"name": "Boolean feature",
 	"kind": "boolean",
 	"description": "True or false, nice and simple",
+	"archived": false,
 	"includeInSnippet": false,
 	"variations": [
 		{
@@ -20,6 +21,10 @@
 	],
 	"goalIds": [],
 	"customProperties": {},
+	"experiments": {
+		"baselineIdx": 0,
+		"items": []
+	},
 	"environments": {
 		"production": {
 			"on": true,

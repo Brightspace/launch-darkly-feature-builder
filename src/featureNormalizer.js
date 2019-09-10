@@ -71,11 +71,16 @@ const ignoredFeatureFlagFields = deepFreeze( [
 
 const defaultFeatureFlagFields = deepFreeze( {
 	description: '',
+	archived: false,
 	includeInSnippet: false,
 	temporary: true,
 	tags: [],
 	goalIds: [],
-	customProperties: {}
+	customProperties: {},
+	experiments: {
+		baselineIdx: 0,
+		items: []
+	}
 } );
 
 module.exports = function( feature ) {

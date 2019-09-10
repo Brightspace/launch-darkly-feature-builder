@@ -21,11 +21,16 @@ describe( 'featureNormalizer', function() {
 
 		assert.deepEqual( normalized, {
 			description: '',
+			archived: false,
 			includeInSnippet: false,
 			temporary: true,
 			tags: [],
 			goalIds: [],
 			customProperties: {},
+			experiments: {
+				baselineIdx: 0,
+				items: []
+			},
 			environments: {}
 		} );
 	} );
@@ -40,6 +45,10 @@ describe( 'featureNormalizer', function() {
 			tags: [],
 			goalIds: [],
 			customProperties: {},
+			experiments: {
+				baselineIdx: 0,
+				items: []
+			},
 			environments: {
 				'test': {}
 			}
@@ -50,11 +59,16 @@ describe( 'featureNormalizer', function() {
 		assert.deepEqual( normalized, {
 			name: 'test-feature',
 			description: '',
+			archived: false,
 			includeInSnippet: false,
 			temporary: true,
 			tags: [],
 			goalIds: [],
 			customProperties: {},
+			experiments: {
+				baselineIdx: 0,
+				items: []
+			},
 			environments: {
 				'test': {
 					on: true,
@@ -97,11 +111,16 @@ describe( 'featureNormalizer', function() {
 
 		assert.deepEqual( normalized, {
 			description: '',
+			archived: false,
 			includeInSnippet: false,
 			temporary: true,
 			tags: [],
 			goalIds: [],
 			customProperties: {},
+			experiments: {
+				baselineIdx: 0,
+				items: []
+			},
 			environments: {
 				test: {
 					archived: false,
