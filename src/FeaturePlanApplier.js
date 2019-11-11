@@ -57,7 +57,7 @@ function removeEnvironmentSummaries( flag ) {
 		_.forEach( flag.environments, env => {
 
 			if( env._summary ) {
-				delete rule._summary;
+				delete env._summary;
 			}
 		} );
 	}
