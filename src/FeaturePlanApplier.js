@@ -51,17 +51,32 @@ async function createFeatureAsync( ldClient, project, key, plan, comment ) {
 	);
 }
 
+function removeEnvironmentSummaries( flag ) {
+
+	if( flag.environments ) {
+		_.forEach( flag.environments, env => {
+
+			if( env._summary ) {
+				delete env._summary;
+			}
+		} );
+	}
+}
+
 async function updateFeatureAsync( ldClient, project, key, plan, comment ) {
+
+	const before =  _.cloneDeep( plan.current );
+	removeEnvironmentSummaries( before );
 
 	const flag = await ldClient.getFeatureFlagAsync( project, key );
 
-	if( !_.isEqual( flag, plan.current ) ) {
+	if( !_.isEqual( flag, before ) ) {
 
 		log.warn(
 			{
 				project,
 				feature: key,
-				before: plan.current,
+				before: before,
 				after: flag
 			},
 			'Feature flag has changed since plan was generated'
