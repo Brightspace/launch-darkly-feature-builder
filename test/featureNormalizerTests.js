@@ -84,7 +84,7 @@ describe( 'featureNormalizer', function() {
 			}
 		} );
 	} );
-	
+
 	it( 'should strip out rule clauses __idx__ field', function() {
 
 		const feature = deepFreeze( {
@@ -102,7 +102,7 @@ describe( 'featureNormalizer', function() {
 								}
 							]
 						}
-					]	
+					]
 				}
 			}
 		} );
@@ -145,7 +145,65 @@ describe( 'featureNormalizer', function() {
 							],
 							trackEvents: false
 						}
-					]	
+					]
+				}
+			}
+		} );
+	} );
+
+	it( 'should strip out environment _summary field', function() {
+
+		const feature = deepFreeze( {
+			environments: {
+				test: {
+					_summary: {
+						variations: {
+							'0': {
+								rules: 0,
+								nullRules: 0,
+								targets: 0,
+								isFallthrough: true,
+								isOff: true
+							},
+							'1': {
+								rules: 0,
+								nullRules: 0,
+								targets: 1
+							}
+						},
+						prerequisites: 0
+					}
+				}
+			}
+		} );
+
+		const normalized = featureNormalizer( feature );
+
+		assert.deepEqual( normalized, {
+			description: '',
+			archived: false,
+			includeInSnippet: false,
+			temporary: true,
+			tags: [],
+			goalIds: [],
+			customProperties: {},
+			experiments: {
+				baselineIdx: 0,
+				items: []
+			},
+			environments: {
+				test: {
+					archived: false,
+					fallthrough: {
+						variation: 0
+					},
+					offVariation: 0,
+					on: true,
+					prerequisites: [],
+					rules: [],
+					targets: [],
+					trackEvents: false,
+					trackEventsFallthrough: false
 				}
 			}
 		} );

@@ -1,6 +1,6 @@
 {
   "name": "launch-darkly-feature-builder",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "Builds and manages launch darkly features from code.",
   "bin": {
     "launch-darkly-feature-builder": "./bin/launch-darkly-feature-builder"
@@ -30,7 +30,7 @@
     "nyc": "^14.1.1"
   },
   "dependencies": {
-    "bluebird": "^3.5.5",
+    "bluebird": "^3.7.1",
     "bunyan": "^1.8.12",
     "command-line-args": "^5.1.1",
     "command-line-usage": "^5.0.5",
@@ -39,7 +39,7 @@
     "json-patch-gen": "^1.0.2",
     "lodash": "^4.17.15",
     "request": "^2.88.0",
-    "request-promise": "^4.2.4"
+    "request-promise": "^4.2.5"
   },
   "nyc": {
     "exclude": [
