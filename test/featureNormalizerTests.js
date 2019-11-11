@@ -158,18 +158,18 @@ describe( 'featureNormalizer', function() {
 				test: {
 					_summary: {
 						variations: {
-						'0': {
-							rules: 0,
-							nullRules: 0,
-							targets: 0,
-							isFallthrough: true,
-							isOff: true
-						},
-						'1': {
-							rules: 0,
-							nullRules: 0,
-							targets: 1
-						}
+							'0': {
+								rules: 0,
+								nullRules: 0,
+								targets: 0,
+								isFallthrough: true,
+								isOff: true
+							},
+							'1': {
+								rules: 0,
+								nullRules: 0,
+								targets: 1
+							}
 						},
 						prerequisites: 0
 					}
