@@ -43,7 +43,8 @@ const ignoredEnvironmentFields = deepFreeze( [
 	'lastModified',
 	'salt',
 	'sel',
-	'version'
+	'version',
+	'_summary'
 ] );
 
 const defaultEnvironmentFields = deepFreeze( {
