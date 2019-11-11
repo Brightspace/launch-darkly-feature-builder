@@ -69,6 +69,7 @@ async function updateFeatureAsync( ldClient, project, key, plan, comment ) {
 	removeEnvironmentSummaries( before );
 
 	const flag = await ldClient.getFeatureFlagAsync( project, key );
+	removeEnvironmentSummaries( flag );
 
 	if( !_.isEqual( flag, before ) ) {
 
