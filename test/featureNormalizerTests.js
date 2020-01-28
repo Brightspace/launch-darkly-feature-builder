@@ -31,7 +31,8 @@ describe( 'featureNormalizer', function() {
 				baselineIdx: 0,
 				items: []
 			},
-			environments: {}
+			environments: {},
+			variations: []
 		} );
 	} );
 
@@ -81,7 +82,8 @@ describe( 'featureNormalizer', function() {
 					trackEvents: false,
 					trackEventsFallthrough: false
 				}
-			}
+			},
+			variations: []
 		} );
 	} );
 
@@ -147,7 +149,8 @@ describe( 'featureNormalizer', function() {
 						}
 					]
 				}
-			}
+			},
+			variations: []
 		} );
 	} );
 
@@ -205,7 +208,49 @@ describe( 'featureNormalizer', function() {
 					trackEvents: false,
 					trackEventsFallthrough: false
 				}
-			}
+			},
+			variations: []
+		} );
+	} );
+
+	it( 'should strip out variation _id field', function() {
+
+		const feature = deepFreeze( {
+			variations: [
+				{
+					_id: 'bd72b94b-d75c-4cde-907a-d8fbe5f95d98',
+					value: true
+				},
+				{
+					_id: '010c2576-6415-4222-9193-c96e2d9973a4',
+					value: false
+				}
+			]
+		} );
+
+		const normalized = featureNormalizer( feature );
+
+		assert.deepEqual( normalized, {
+			description: '',
+			archived: false,
+			includeInSnippet: false,
+			temporary: true,
+			tags: [],
+			goalIds: [],
+			customProperties: {},
+			experiments: {
+				baselineIdx: 0,
+				items: []
+			},
+			environments: {},
+			variations: [
+				{
+					value: true
+				},
+				{
+					value: false
+				}
+			]
 		} );
 	} );
 } );
