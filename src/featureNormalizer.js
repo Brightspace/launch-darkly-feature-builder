@@ -71,6 +71,12 @@ function normalizeEnvironment( env ) {
 	return normal;
 }
 
+function normalizeVariation( variation ) {
+
+	const normal = _.omitBy( variation, isInternalField );
+	return normal;
+}
+
 const ignoredFeatureFlagFields = deepFreeze( [
 	'creationDate',
 	'key',
@@ -102,6 +108,11 @@ module.exports = function( feature ) {
 		feature.environments || {},
 		normalizeEnvironment
 	);
-	
+
+	normal.variations = _.map(
+		feature.variations || [], 
+		normalizeVariation 
+	);
+
 	return normal;
 };
