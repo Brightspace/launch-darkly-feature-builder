@@ -154,6 +154,73 @@ describe( 'featureNormalizer', function() {
 		} );
 	} );
 
+	it( 'should strip out rule clauses id field', function() {
+
+		const feature = deepFreeze( {
+			environments: {
+				test: {
+					rules: [
+						{
+							clauses: [
+								{
+									attribute: 'field',
+									op: 'in',
+									values: [ 'value' ],
+									negate: false,
+									id: ''
+								}
+							]
+						}
+					]
+				}
+			}
+		} );
+
+		const normalized = featureNormalizer( feature );
+
+		assert.deepEqual( normalized, {
+			description: '',
+			archived: false,
+			includeInSnippet: false,
+			temporary: true,
+			tags: [],
+			goalIds: [],
+			customProperties: {},
+			experiments: {
+				baselineIdx: 0,
+				items: []
+			},
+			environments: {
+				test: {
+					archived: false,
+					fallthrough: {
+						variation: 0
+					},
+					offVariation: 0,
+					on: true,
+					prerequisites: [],
+					targets: [],
+					trackEvents: false,
+					trackEventsFallthrough: false,
+					rules: [
+						{
+							clauses: [
+								{
+									attribute: 'field',
+									op: 'in',
+									values: [ 'value' ],
+									negate: false
+								}
+							],
+							trackEvents: false
+						}
+					]
+				}
+			},
+			variations: []
+		} );
+	} );
+
 	it( 'should strip out environment _summary field', function() {
 
 		const feature = deepFreeze( {
