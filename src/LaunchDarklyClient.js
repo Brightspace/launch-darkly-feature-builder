@@ -18,6 +18,9 @@ class LaunchDarklyClient {
 		const req = {
 			method: 'GET',
 			url: url,
+			qs: {
+				summary: 'false'
+			},
 			json: true
 		};
 

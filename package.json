@@ -1,6 +1,6 @@
 {
   "name": "launch-darkly-feature-builder",
-  "version": "0.18.0",
+  "version": "0.19.0",
   "description": "Builds and manages launch darkly features from code.",
   "bin": {
     "launch-darkly-feature-builder": "./bin/launch-darkly-feature-builder"
