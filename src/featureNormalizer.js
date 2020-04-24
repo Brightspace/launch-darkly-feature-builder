@@ -19,7 +19,10 @@ function omitExplicitAndInternal( object, paths ) {
 
 function normalizeClause( clause ) {
 
-	const normal = _.omitBy( clause, isInternalField );
+	const normal = _.omit(
+		_.omitBy( clause, isInternalField ),
+		'id'
+	);
 	return normal;
 }
 
