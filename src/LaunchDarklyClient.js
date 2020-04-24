@@ -13,14 +13,11 @@ class LaunchDarklyClient {
 
 	getAllFeatureFlagsAsync( project ) {
 
-		const url = `/api/v2/flags/${ encodeURI( project ) }`;
+		const url = `/api/v2/flags/${ encodeURI( project ) }?summary=false`;
 
 		const req = {
 			method: 'GET',
 			url: url,
-			qs: {
-				summary: 'false'
-			},
 			json: true
 		};
 
@@ -42,7 +39,7 @@ class LaunchDarklyClient {
 
 	getFeatureFlagAsync( project, key ) {
 
-		const url = `/api/v2/flags/${ encodeURI( project ) }/${ encodeURI( key ) }`;
+		const url = `/api/v2/flags/${ encodeURI( project ) }/${ encodeURI( key ) }?summary=false`;
 
 		const req = {
 			method: 'GET',
