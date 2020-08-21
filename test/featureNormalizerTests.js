@@ -22,6 +22,10 @@ describe( 'featureNormalizer', function() {
 		assert.deepEqual( normalized, {
 			description: '',
 			archived: false,
+			clientSideAvailability: {
+				usingEnvironmentId: false,
+				usingMobileKey: true
+			},
 			includeInSnippet: false,
 			temporary: true,
 			tags: [],
@@ -61,6 +65,10 @@ describe( 'featureNormalizer', function() {
 			name: 'test-feature',
 			description: '',
 			archived: false,
+			clientSideAvailability: {
+				usingEnvironmentId: false,
+				usingMobileKey: true
+			},
 			includeInSnippet: false,
 			temporary: true,
 			tags: [],
@@ -114,6 +122,10 @@ describe( 'featureNormalizer', function() {
 		assert.deepEqual( normalized, {
 			description: '',
 			archived: false,
+			clientSideAvailability: {
+				usingEnvironmentId: false,
+				usingMobileKey: true
+			},
 			includeInSnippet: false,
 			temporary: true,
 			tags: [],
@@ -181,6 +193,10 @@ describe( 'featureNormalizer', function() {
 		assert.deepEqual( normalized, {
 			description: '',
 			archived: false,
+			clientSideAvailability: {
+				usingEnvironmentId: false,
+				usingMobileKey: true
+			},
 			includeInSnippet: false,
 			temporary: true,
 			tags: [],
@@ -252,6 +268,10 @@ describe( 'featureNormalizer', function() {
 		assert.deepEqual( normalized, {
 			description: '',
 			archived: false,
+			clientSideAvailability: {
+				usingEnvironmentId: false,
+				usingMobileKey: true
+			},
 			includeInSnippet: false,
 			temporary: true,
 			tags: [],
@@ -300,6 +320,10 @@ describe( 'featureNormalizer', function() {
 		assert.deepEqual( normalized, {
 			description: '',
 			archived: false,
+			clientSideAvailability: {
+				usingEnvironmentId: false,
+				usingMobileKey: true
+			},
 			includeInSnippet: false,
 			temporary: true,
 			tags: [],
