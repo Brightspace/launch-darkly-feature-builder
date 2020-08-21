@@ -3,6 +3,10 @@
 	"kind": "boolean",
 	"description": "True or false, nice and simple",
 	"archived": false,
+	"clientSideAvailability": {
+		"usingEnvironmentId": false,
+		"usingMobileKey": true
+	},
 	"includeInSnippet": false,
 	"variations": [
 		{
