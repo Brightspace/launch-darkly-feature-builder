@@ -10,6 +10,7 @@ try {
 }
 
 const applyAsync = require( './applyAction.js' );
+const exportAsync = require( './exportAction.js' );
 const planAsync = require( './planAction.js' );
 const showAsync = require( './showAction.js' );
 const validateAsync = require( './validateAction.js' );
@@ -31,6 +32,9 @@ function runAsync( args ) {
 
 		case 'apply':
 			return applyAsync( args.args );
+
+		case 'export':
+			return exportAsync( args.args );
 
 		case 'plan':
 			return planAsync( args.args );

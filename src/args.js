@@ -73,6 +73,21 @@ const actionDefintions = deepFreeze( {
 			name: 'features',
 			required: true
 		}
+	],
+	export: [
+		{
+			name: 'converters',
+			required: true,
+			defaultValue: pathUtil.resolve( __dirname, '../..' )
+		},
+		{
+			name: 'features',
+			required: true
+		},
+		{
+			name: 'out',
+			required: true
+		}
 	]
 } );
 
@@ -132,7 +147,8 @@ function showUsage() {
 				'$ launch-darkly-feature-builder validate ...',
 				'$ launch-darkly-feature-builder plan ...',
 				'$ launch-darkly-feature-builder show ...',
-				'$ launch-darkly-feature-builder apply ...'
+				'$ launch-darkly-feature-builder apply ...',
+				'$ launch-darkly-feature-builder export ...'
 			]
 		},
 		{
@@ -211,6 +227,26 @@ function showUsage() {
 					name: 'comment',
 					typeLabel: '{underline comment}',
 					description: 'The comment to include in patches'
+				}
+			]
+		},
+		{
+			header: 'export options',
+			optionList: [
+				{
+					name: 'converters',
+					typeLabel: '{underline directory}',
+					description: 'The path to the converters plugin directory'
+				},
+				{
+					name: 'features',
+					typeLabel: '{underline directory}',
+					description: 'The path to the features directory'
+				},
+				{
+					name: 'out',
+					typeLabel: '{underline file}',
+					description: 'The file to output the features to.'
 				}
 			]
 		}
