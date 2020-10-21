@@ -1,16 +1,21 @@
+const sortObject = require( 'deep-sort-object' );
+const featureNormalizer = require( './featureNormalizer.js' );
 const loadFeaturesAsync = require( './featuresLoader.js' );
 const log = require( './log.js' );
 const pathUtil = require( 'path' );
 const fsPromises = require( 'fs' ).promises;
 
-function sortFeatures( features ) {
+function normalizeFeatures( features ) {
 
 	const sortedKeys = Object.keys( features ).sort();
 
 	const result = {};
 
 	sortedKeys.forEach( key => {
-		result[ key ] = features[ key ];
+
+		const feature = featureNormalizer( features[ key ] );
+		const sortedFeature = sortObject( feature );
+		result[ key ] = sortedFeature;
 	} );
 
 	return result;
@@ -23,8 +28,8 @@ module.exports = async function( args ) {
 	const outFile = pathUtil.resolve( args.out );
 
 	const features = await loadFeaturesAsync( convertersDir, featuresDir );
-	const sortedFeatures = sortFeatures( features );
-	const featuresJson = JSON.stringify( sortedFeatures, null, '\t' );
+	const normalizedFeatures = normalizeFeatures( features );
+	const featuresJson = JSON.stringify( normalizedFeatures, null, '\t' );
 
 	log.debug( { path: outFile }, 'Writing export file' );
 	await fsPromises.writeFile( outFile, featuresJson, { encoding: 'utf8' } );
