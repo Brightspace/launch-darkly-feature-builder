@@ -1,6 +1,6 @@
 {
   "name": "launch-darkly-feature-builder",
-  "version": "0.23.0",
+  "version": "0.24.0",
   "description": "Builds and manages launch darkly features from code.",
   "bin": {
     "launch-darkly-feature-builder": "./bin/launch-darkly-feature-builder"
@@ -36,6 +36,7 @@
     "command-line-usage": "^6.1.0",
     "d2l-json-patch-gen": "^1.1.0",
     "deep-freeze": "0.0.1",
+    "deep-sort-object": "^1.0.2",
     "json-patch-gen": "^1.0.2",
     "lodash": "^4.17.20",
     "request": "^2.88.2",
