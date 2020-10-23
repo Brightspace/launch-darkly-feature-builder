@@ -29,10 +29,16 @@ module.exports = async function( args ) {
 
 	const features = await loadFeaturesAsync( convertersDir, featuresDir );
 	const normalizedFeatures = normalizeFeatures( features );
-	const featuresJson = JSON.stringify( normalizedFeatures, null, '\t' );
+
+	const exportData = {
+		flags: normalizedFeatures,
+		segments: {}
+	};
+
+	const exportJson = JSON.stringify( exportData, null, '\t' );
 
 	log.debug( { path: outFile }, 'Writing export file' );
-	await fsPromises.writeFile( outFile, featuresJson, { encoding: 'utf8' } );
+	await fsPromises.writeFile( outFile, exportJson, { encoding: 'utf8' } );
 
 	return 0;
 };
